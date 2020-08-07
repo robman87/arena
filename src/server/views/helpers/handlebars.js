@@ -71,9 +71,9 @@ const helpers = {
     return mapping;
   },
 
-  encodeURI(url) {
+  encodeURI(value) {
     if (typeof value === "string") {
-      return encodeURIComponent(url);
+      return encodeURIComponent(value);
     }
   },
 
