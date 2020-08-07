@@ -101,6 +101,7 @@ async function _html(req, res) {
     jobs = jobs.filter((job) => job);
   } else {
     jobs = await queue[`get${_.capitalize(state)}`](startId, endId);
+    jobs = jobs.filter((job) => job && typeof job === 'object') // Filter out Bull jobs that have become null by the time the promise resolves
     await jobs.map(async (job) => {
       let logs = await queue.getJobLogs(job.id);
       job.logs = logs.logs || 'No Logs';
