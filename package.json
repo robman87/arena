@@ -9,6 +9,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^5.1.0",
     "handlebars": "^4.7.6",
+    "handlebars-utils": "^1.0.6",
     "jsoneditor": "^5.34.0",
     "lodash": "^4.17.19",
     "moment": "^2.27.0",

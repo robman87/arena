@@ -2,6 +2,7 @@ const crypto = require('crypto');
 const _ = require('lodash');
 const Handlebars = require('handlebars');
 const moment = require('moment');
+const util = require("handlebars-utils")
 
 const replacer = (key, value) => {
   if (_.isObject(value)) {
@@ -119,6 +120,14 @@ const helpers = {
 
   moment(date, format) {
     moment(date).format(format)
+  },
+
+  eq(a, b, options) {
+    if (arguments.length === 2) {
+      options = b;
+      b = options.hash.compare;
+    }
+    return util.value(a === b, this, options);
   },
 };
 
