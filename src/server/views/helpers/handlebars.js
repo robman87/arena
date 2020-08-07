@@ -108,7 +108,7 @@ const helpers = {
   },
 
   length(value) {
-    if (util.isObject(value) && !util.isOptions(value)) {
+    if (value !== null && typeof value === 'object') {
       value = Object.keys(value);
     }
     if (typeof value === "string" || Array.isArray(value)) {
