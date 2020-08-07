@@ -11,6 +11,7 @@
     "handlebars": "^4.7.6",
     "jsoneditor": "^5.34.0",
     "lodash": "^4.17.19",
+    "moment": "^2.27.0",
     "tablesort": "^5.2.1"
   },
   "devDependencies": {
