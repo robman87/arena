@@ -1,6 +1,9 @@
 node_modules
 package-lock.json
+pnpm-lock.yaml
+yarn.lock
 *.DS_Store
 .vscode
 .idea
 *.tern-port
+.npmrc
