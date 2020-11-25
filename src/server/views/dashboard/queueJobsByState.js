@@ -105,7 +105,7 @@ async function _html(req, res) {
     // Wait for all logs to be added to jobs before rendering page
     jobs = await Promise.all(
         jobs.map(async (job) => {
-          let logs = await queue.getJobLogs(job.id);
+          const logs = await queue.getJobLogs(job.id);
           job.logs = logs.logs || 'No Logs';
           return job;
         })

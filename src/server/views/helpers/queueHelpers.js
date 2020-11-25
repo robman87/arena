@@ -66,13 +66,12 @@ function parseRedisServerInfo(rawServerInfo) {
 }
 
 const Helpers = {
-  getStats: async function(queue) {
-    const rawServerInfo = await queue.client.info();
+  getStats: async function (queue) {
+    const client = await queue.client;
+    const rawServerInfo = await client.info();
     const serverInfo = parseRedisServerInfo(rawServerInfo);
 
-    const stats = _.pickBy(serverInfo, (value, key) =>
-        _.includes(this._usefulMetrics, key)
-    );
+    const stats = _.pickBy(serverInfo, (value, key) => _.includes(this._usefulMetrics, key));
     stats.used_memory = formatBytes(parseInt(stats.used_memory, 10));
     stats.total_system_memory = formatBytes(parseInt(stats.total_system_memory, 10));
     return stats;

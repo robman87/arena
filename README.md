@@ -24,13 +24,12 @@ const Arena = require('bull-arena');
 
 // Mandatory import of queue library.
 const Bee = require('bee-queue');
-// const Bull = require('bull');
 
 Arena({
   // All queue libraries used must be explicitly imported and included.
   Bee,
 
-  // Set `Bull` when using bull.
+  // Provide a `Bull` option when using bull, similar to the `Bee` option above.
 
   queues: [
     {
@@ -139,6 +138,7 @@ const router = express.Router();
 const Bull = require('bull')
 
 const arena = Arena({
+  // Include a reference to the bee-queue or bull libraries, depending on the library being used.
   Bull,
   queues: [
     {
@@ -168,8 +168,7 @@ router.use('/', arena);
 
 ```js
 import Arena from 'bull-arena';
-
-const Bull = require('bull')
+import Bull from 'bull';
 
 const arenaConfig = Arena({
   Bull,
@@ -204,9 +203,50 @@ app.use('/', arenaConfig);
 
 (Credit to [tim-soft](https://github.com/tim-soft) for the example config.)
 
+##### Example config (for bullmq)
+
+```js
+import Arena from 'bull-arena';
+import { Queue } from "bullmq";
+
+const arenaConfig = Arena({
+  BullMQ: Queue,
+  queues: [
+    {
+      // Name of the bullmq queue, this name must match up exactly with what you've defined in bullmq.
+      name: "testQueue",
+
+      // Hostname or queue prefix, you can put whatever you want.
+      hostId: "worker",
+
+      // Redis auth.
+      redis: {
+        port: /* Your redis port */,
+        host: /* Your redis host domain*/,
+        password: /* Your redis password */,
+      },
+    },
+  ],
+},
+{
+  // Make the arena dashboard become available at {my-site.com}/arena.
+  basePath: '/arena',
+
+  // Let express handle the listening.
+  disableListen: true
+});
+
+// Make arena's resources (js/css deps) available at the base app route
+app.use('/', arenaConfig);
+```
+
 ### Bee Queue support
 
 Arena is dual-compatible with Bull 3.x and Bee-Queue 1.x. To add a Bee queue to the Arena dashboard, include the `type: 'bee'` property with an individual queue's configuration object.
+
+### BullMQ Queue support
+
+Arena has added preliminary support for BullMQ post 3.4.x version. To add a BullMQ queue to the Arena dashboard, include the `type: 'bullmq'` property with an individual queue's configuration object.
 
 ### Docker image
 

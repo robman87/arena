@@ -11,13 +11,13 @@
     "handlebars": "^4.7.6",
     "handlebars-utils": "^1.0.6",
     "jsoneditor": "^5.34.0",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.20",
     "moment": "^2.27.0",
     "tablesort": "^5.2.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^9.1.2",
-    "@commitlint/config-conventional": "^9.1.2",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "@mixmaxhq/prettier-config": "^1.0.0",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/commit-analyzer": "^8.0.1",
@@ -33,7 +33,7 @@
     "semantic-release": "^17.1.1"
   },
   "scripts": {
-    "ci": "npm run lint && if [ \"$GITHUB_EVENT_NAME\" != push ]; then npm run ci:commitlint; fi",
+    "ci": "npm run lint && if [ -z \"$CI\" ]; then npm run ci:commitlint; fi",
     "ci:commitlint": "commitlint --from \"origin/${GITHUB_BASE_REF:-master}\"",
     "lint": "prettier -c ."
   },

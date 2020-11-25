@@ -1,3 +1,58 @@
+## [3.6.0](https://github.com/bee-queue/arena/compare/v3.5.0...v3.6.0) (2020-11-25)
+
+### Features
+
+- support bullmq in docker image ([c10a294](https://github.com/bee-queue/arena/commit/c10a29448de701fece6efeac3d82d577d1683701)), closes [bee-queue/docker-arena#50](https://github.com/bee-queue/docker-arena/issues/50)
+
+## [3.5.0](https://github.com/bee-queue/arena/compare/v3.4.0...v3.5.0) (2020-11-21)
+
+### Features
+
+- **job-details:** support arenaName display field ([332fb3a](https://github.com/bee-queue/arena/commit/332fb3af0d6a3af802b5e2f52ceaaa2f6fa7613f))
+
+## [3.4.0](https://github.com/bee-queue/arena/compare/v3.3.3...v3.4.0) (2020-11-01)
+
+### Features
+
+- **bullmq:** initial support for bullmq ([#251](https://github.com/bee-queue/arena/issues/251)) ([1159dde](https://github.com/bee-queue/arena/commit/1159dde1223259c21d260ba4491026f6020e367f))
+
+### [3.3.3](https://github.com/bee-queue/arena/compare/v3.3.2...v3.3.3) (2020-10-29)
+
+### Bug Fixes
+
+- **job-details:** actually correctly wait for promises ([#271](https://github.com/bee-queue/arena/issues/271)) ([6e205a6](https://github.com/bee-queue/arena/commit/6e205a6a3efd4e56347fb6351b61f69755e598d9))
+
+### [3.3.2](https://github.com/bee-queue/arena/compare/v3.3.1...v3.3.2) (2020-10-29)
+
+### Bug Fixes
+
+- **job-details:** correctly wait for promises ([#254](https://github.com/bee-queue/arena/issues/254)) ([934e92a](https://github.com/bee-queue/arena/commit/934e92ab840fdd63e1d88b1584447f493bd10e94))
+
+### [3.3.1](https://github.com/bee-queue/arena/compare/v3.3.0...v3.3.1) (2020-10-28)
+
+### Bug Fixes
+
+- **deps:** use correct bootstrap css ([#266](https://github.com/bee-queue/arena/issues/266)) ([a5a5e23](https://github.com/bee-queue/arena/commit/a5a5e23b7e8d775b245f3b226790600d07d73650))
+
+## [3.3.0](https://github.com/bee-queue/arena/compare/v3.2.4...v3.3.0) (2020-10-28)
+
+### Features
+
+- **job-details:** show stacktraces when job is delayed or done ([#238](https://github.com/bee-queue/arena/issues/238)) ([6b3dd6f](https://github.com/bee-queue/arena/commit/6b3dd6f3117cdd8296c4eec9c2b39da90acea77e))
+
+### [3.2.4](https://github.com/bee-queue/arena/compare/v3.2.3...v3.2.4) (2020-10-28)
+
+### Bug Fixes
+
+- **security:** upgrade jquery and bootstrap ([#253](https://github.com/bee-queue/arena/issues/253)) ([14b317b](https://github.com/bee-queue/arena/commit/14b317b956f099fc6c1d2fdc3719abbdcfc87925))
+- revert jQuery upgrade ([#252](https://github.com/bee-queue/arena/issues/252)) ([2a268c3](https://github.com/bee-queue/arena/commit/2a268c3d8fc6a799126669a8fdd77815b0dc72e8))
+
+### [3.2.3](https://github.com/bee-queue/arena/compare/v3.2.2...v3.2.3) (2020-10-17)
+
+### Bug Fixes
+
+- **security:** upgrade jQuery to v3.5.1 ([#249](https://github.com/bee-queue/arena/issues/249)) ([c124a47](https://github.com/bee-queue/arena/commit/c124a472cfcceeb2e53502219b51d5bb0a69c2e4))
+
 ### [3.2.2](https://github.com/bee-queue/arena/compare/v3.2.1...v3.2.2) (2020-08-06)
 
 ### Bug Fixes
