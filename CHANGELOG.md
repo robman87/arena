@@ -1,3 +1,15 @@
+## [3.7.0](https://github.com/bee-queue/arena/compare/v3.6.1...v3.7.0) (2020-12-16)
+
+### Features
+
+- **deps:** remove dependency on `handlebars-helpers` ([#302](https://github.com/bee-queue/arena/issues/302)) ([bbacae8](https://github.com/bee-queue/arena/commit/bbacae8d4af5e8f157e992d926b43ccb947e4015))
+
+### [3.6.1](https://github.com/bee-queue/arena/compare/v3.6.0...v3.6.1) (2020-11-26)
+
+### Bug Fixes
+
+- support redis configuration with bullmq ([#294](https://github.com/bee-queue/arena/issues/294)) ([ab4b806](https://github.com/bee-queue/arena/commit/ab4b806308abec5d1824ee9b44f71bafcf8c6e3a))
+
 ## [3.6.0](https://github.com/bee-queue/arena/compare/v3.5.0...v3.6.0) (2020-11-25)
 
 ### Features

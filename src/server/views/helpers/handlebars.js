@@ -2,7 +2,6 @@ const crypto = require('crypto');
 const _ = require('lodash');
 const Handlebars = require('handlebars');
 const moment = require('moment');
-const util = require("handlebars-utils")
 
 const replacer = (key, value) => {
   if (_.isObject(value)) {
@@ -18,16 +17,6 @@ const replacer = (key, value) => {
 
 // For jobs that don't have a valid ID, produce a random ID we can use in its place.
 const idMapping = new WeakMap();
-
-const isNumber = (n) => {
-  if (typeof num === "number") {
-    return num - num === 0;
-  }
-  if (typeof num === "string" && num.trim() !== "") {
-    return Number.isFinite ? Number.isFinite(+num) : isFinite(+num);
-  }
-  return false;
-};
 
 const helpers = {
   json(obj, pretty = false) {
@@ -72,62 +61,55 @@ const helpers = {
     return mapping;
   },
 
-  encodeURI(value) {
-    if (typeof value === "string") {
-      return encodeURIComponent(value);
+  encodeURI(url) {
+    if (typeof url !== 'string') {
+      return '';
     }
+    return encodeURIComponent(url);
   },
 
   capitalize(s) {
-    if (typeof value !== "string") {
-      return "";
+    if (typeof value !== 'string') {
+      return '';
     }
-
     return s.charAt(0).toUpperCase() + s.slice(1);
   },
 
   add(a, b) {
-    if (isNumber(a) && isNumber(b)) {
-      return Number(a) + Number(b);
+    if (Handlebars.helpers.isNumber(a) && Handlebars.helpers.isNumber(b)) {
+      return parseInt(a, 10) + parseInt(b, 10);
     }
 
-    if (typeof a === "string" && typeof b === "string") {
+    if (typeof a === 'string' && typeof b === 'string') {
       return a + b;
     }
 
-    return "";
+    return '';
   },
 
   subtract(a, b) {
-    if (!isNumber(a)) {
-      throw new TypeError("expected the first argument to be a number");
+    if (!Handlebars.helpers.isNumber(a)) {
+      throw new TypeError('expected the first argument to be a number');
     }
-    if (!isNumber(b)) {
-      throw new TypeError("expected the second argument to be a number");
+    if (!Handlebars.helpers.isNumber(b)) {
+      throw new TypeError('expected the second argument to be a number');
     }
-    return Number(a) - Number(b);
+    return parseInt(a, 10) - parseInt(b, 10);
   },
 
   length(value) {
-    if (value !== null && typeof value === 'object') {
-      value = Object.keys(value);
-    }
-    if (typeof value === "string" || Array.isArray(value)) {
+    if (typeof value === 'string' || Array.isArray(value)) {
       return value.length;
     }
     return 0;
   },
 
   moment(date, format) {
-    return moment(date).format(format)
+    return moment(date).format(format);
   },
 
   eq(a, b, options) {
-    if (arguments.length === 2) {
-      options = b;
-      b = options.hash.compare;
-    }
-    return util.value(a === b, this, options);
+    return a === b ? options.fn(this) : options.inverse(this);
   },
 };
 
