@@ -108,16 +108,6 @@ async function _html(req, res) {
     const stateTypes = state === 'waiting' ? ['wait', 'paused'] : state;
     jobs = await queue.getJobs(stateTypes, startId, endId, order === 'asc');
     jobs = jobs.filter((job) => job && typeof job === 'object') // Filter out Bull jobs that have become null by the time the promise resolves
-    /*
-    // Wait for all logs to be added to jobs before rendering page
-    jobs = await Promise.all(
-        jobs.map(async (job) => {
-          const logs = await queue.getJobLogs(job.id);
-          job.logs = logs.logs || 'No Logs';
-          return job;
-        })
-    );
-    */
   }
 
   for (const job of jobs) {

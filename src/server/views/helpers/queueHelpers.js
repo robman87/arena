@@ -71,7 +71,7 @@ function parseRedisServerInfo(rawServerInfo) {
 const Helpers = {
   getStats: async function (queue) {
     const client = await queue.client;
-    const rawServerInfo = await client.info();
+    const rawServerInfo = await client.info(); // update queue.client.serverInfo
     const serverInfo = parseRedisServerInfo(rawServerInfo);
 
     const stats = _.pickBy(serverInfo, (value, key) =>
