@@ -7,3 +7,5 @@ yarn.lock
 .idea
 *.tern-port
 .npmrc
+*.sublime-workspace
+dump.rdb
