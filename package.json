@@ -8,14 +8,14 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.2",
     "express-handlebars": "^5.1.0",
-    "handlebars": "^4.7.6",
+    "handlebars": "^4.7.7",
     "lodash": "^4.17.15",
     "moment": "^2.29.1",
     "tablesort": "^5.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
-    "@commitlint/config-conventional": "^11.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/commit-analyzer": "^8.0.1",
     "@semantic-release/exec": "^5.0.0",
@@ -52,6 +52,12 @@
     "public",
     "src"
   ],
+  "keywords": [
+    "bull-arena",
+    "bull",
+    "bee",
+    "bullmq"
+  ],
   "repository": "https://github.com/bee-queue/arena.git",
-  "version": "3.20.1"
+  "version": "3.29.3"
 }
