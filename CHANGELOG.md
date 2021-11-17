@@ -1,3 +1,90 @@
+### [3.29.3](https://github.com/bee-queue/arena/compare/v3.29.2...v3.29.3) (2021-09-08)
+
+### Bug Fixes
+
+- 🐛 Update how Redis URL is passed to Bull ([81bf488](https://github.com/bee-queue/arena/commit/81bf488d3d668dba986bc03e171e6f3bc0faf761)), closes [OptimalBits/bull#2118](https://github.com/OptimalBits/bull/issues/2118)
+
+### [3.29.2](https://github.com/bee-queue/arena/compare/v3.29.1...v3.29.2) (2021-08-12)
+
+### Bug Fixes
+
+- Revert bootstrap upgrade in 3.24.0 ([PR](https://github.com/bee-queue/arena/pull/432))
+
+### [3.29.1](https://github.com/bee-queue/arena/compare/v3.29.0...v3.29.1) (2021-07-06)
+
+### Bug Fixes
+
+- **job-details:** encodeURI of job ID for URL ([0b60010](https://github.com/bee-queue/arena/commit/0b600102769fe066c2aec7046c970009dbd5ef5f)), closes [#416](https://github.com/bee-queue/arena/issues/416)
+
+## [3.29.0](https://github.com/bee-queue/arena/compare/v3.28.0...v3.29.0) (2021-06-14)
+
+### Features
+
+- **tree-view:** use perma links on nodes ([07b6f3d](https://github.com/bee-queue/arena/commit/07b6f3d89970cc8da3b2988f68213b47eac86c51))
+
+## [3.28.0](https://github.com/bee-queue/arena/compare/v3.27.0...v3.28.0) (2021-06-11)
+
+### Features
+
+- **flow:** add search button to get a flow tree ([59b0423](https://github.com/bee-queue/arena/commit/59b0423d1525f1166ded19dfe9fe937b3a98023e))
+- **layout:** add treeview ([d3fa754](https://github.com/bee-queue/arena/commit/d3fa754bf292c1e4f3d2805af4dfd155f1437f2f))
+- **tree-view:** add tree view when creating a flow ([eb93a60](https://github.com/bee-queue/arena/commit/eb93a60c96ec4322ea1ca1d9b85389b9839e4712))
+
+## [3.27.0](https://github.com/bee-queue/arena/compare/v3.26.0...v3.27.0) (2021-06-11)
+
+### Features
+
+- **job-details:** add pagination options in getDependencies ([40e177f](https://github.com/bee-queue/arena/commit/40e177f7acdb2991d6ba6e58b2fa82bce641d348))
+
+## [3.26.0](https://github.com/bee-queue/arena/compare/v3.25.0...v3.26.0) (2021-06-10)
+
+### Features
+
+- **job-details:** add children counters ([71bbb9d](https://github.com/bee-queue/arena/commit/71bbb9dc3d5ec3236b5281b87aad757acde40462))
+
+## [3.25.0](https://github.com/bee-queue/arena/compare/v3.24.1...v3.25.0) (2021-06-10)
+
+### Features
+
+- **parent-children:** implement perma-link for bullmq ([bbd2317](https://github.com/bee-queue/arena/commit/bbd2317606ed5fab5626de06f381ee02d6d7ab45))
+- initial changes for displaying parentJob and childrenJobs in JobDetails template - WIP ([61d93e2](https://github.com/bee-queue/arena/commit/61d93e2fc31080bb3bc6846c212c75b96b5267d9))
+
+### [3.24.1](https://github.com/bee-queue/arena/compare/v3.24.0...v3.24.1) (2021-06-08)
+
+### Bug Fixes
+
+- **job-details:** show progress for bullmq ([8341174](https://github.com/bee-queue/arena/commit/8341174cba43bf24ca4863df6abe88f2fb37fc98))
+
+## [3.24.0](https://github.com/bee-queue/arena/compare/v3.23.0...v3.24.0) (2021-06-07)
+
+### Features
+
+- **bootstrap:** upgrade to v4.6.0 ([c8d24c5](https://github.com/bee-queue/arena/commit/c8d24c58bce363a0931fe1c67b885c165dbfc21b))
+
+## [3.23.0](https://github.com/bee-queue/arena/compare/v3.22.0...v3.23.0) (2021-06-02)
+
+### Features
+
+- **bullmq:** provide support for flow creation ([da783af](https://github.com/bee-queue/arena/commit/da783afd52853a9c63510c3d1483afe1b15cf6c1))
+- **flow-details:** add redis statistics ([e2b20f3](https://github.com/bee-queue/arena/commit/e2b20f374ccda9d51d3f2b23db5e1c29a0994bba))
+
+## [3.22.0](https://github.com/bee-queue/arena/compare/v3.21.0...v3.22.0) (2021-05-25)
+
+### Features
+
+- **bull:** adding pause queue button ([019f7f5](https://github.com/bee-queue/arena/commit/019f7f53740c0c1804bbc8506ee0f8155348bba0))
+
+### Bug Fixes
+
+- **bull:** consider paused state ([3651d52](https://github.com/bee-queue/arena/commit/3651d5252d2d5a6b1cf704f34f75a97fe8c7582a))
+- **deps:** upgrading handlebars to 4.7.7 ([5a62529](https://github.com/bee-queue/arena/commit/5a62529507b6c1895facc596a24daea4b9c5f842))
+
+## [3.21.0](https://github.com/bee-queue/arena/compare/v3.20.1...v3.21.0) (2021-05-20)
+
+### Features
+
+- **bullmq:** support waiting-children state ([8832821](https://github.com/bee-queue/arena/commit/8832821225f69b51f753f24aa76d72889515031f))
+
 ### [3.20.1](https://github.com/bee-queue/arena/compare/v3.20.0...v3.20.1) (2021-04-15)
 
 ### Bug Fixes

@@ -1,5 +1,5 @@
 const Arena = require('../');
-const {Queue, QueueScheduler, Worker, FlowProducer} = require('bullmq');
+const {Queue, Worker, FlowProducer} = require('bullmq');
 const RedisServer = require('redis-server');
 
 // Select ports that are unlikely to be used by other services a developer might be running locally.
@@ -14,11 +14,6 @@ async function main() {
   const queueName = 'name_of_my_queue';
   const parentQueueName = 'name_of_my_parent_queue';
 
-  const queueScheduler = new QueueScheduler(queueName, {
-    connection: {port: REDIS_SERVER_PORT},
-  });
-  await queueScheduler.waitUntilReady();
-
   const queue = new Queue(queueName, {
     connection: {port: REDIS_SERVER_PORT},
   });
@@ -32,9 +27,7 @@ async function main() {
 
   new Worker(
     queueName,
-    async function (job) {
-      await job.updateProgress(20);
-
+    async function () {
       // Wait 5sec
       await new Promise((res) => setTimeout(res, 5000));
 
@@ -64,25 +57,22 @@ async function main() {
     }
   );
 
-  const children = Array.from(Array(65).keys()).map((index) => ({
-    name: 'child',
-    data: {idx: index, foo: 'bar'},
-    queueName,
-  }));
   await flow.add({
     name: 'parent-job',
     queueName: parentQueueName,
     data: {},
-    children,
+    children: [
+      {name: 'child', data: {idx: 0, foo: 'bar'}, queueName},
+      {name: 'child', data: {idx: 1, foo: 'baz'}, queueName},
+      {name: 'child', data: {idx: 2, foo: 'qux'}, queueName},
+    ],
   });
-
-  // adding delayed jobs
-  const delayedJob = await queue.add('delayed', {}, {delay: 60 * 1000});
-  delayedJob.log('Log message');
 
   Arena(
     {
       BullMQ: Queue,
+
+      FlowBullMQ: FlowProducer,
 
       queues: [
         {
@@ -90,7 +80,7 @@ async function main() {
           name: queueName,
 
           // User-readable display name for the host. Required.
-          hostId: 'Queue Server 1',
+          hostId: 'Server 1',
 
           // Queue type (Bull or Bullmq or Bee - default Bull).
           type: 'bullmq',
@@ -105,7 +95,40 @@ async function main() {
           name: parentQueueName,
 
           // User-readable display name for the host. Required.
-          hostId: 'Queue Server 2',
+          hostId: 'Server 1',
+
+          // Queue type (Bull or Bullmq or Bee - default Bull).
+          type: 'bullmq',
+
+          redis: {
+            // host: 'localhost',
+            port: REDIS_SERVER_PORT,
+          },
+        },
+      ],
+
+      flows: [
+        {
+          // User-readable display name for the host. Required.
+          hostId: 'Server 1',
+
+          // Required for each flow definition.
+          name: 'Connection name 1',
+
+          // Queue type (Bull or Bullmq or Bee - default Bull).
+          type: 'bullmq',
+
+          redis: {
+            // host: 'localhost',
+            port: REDIS_SERVER_PORT,
+          },
+        },
+        {
+          // User-readable display name for the host. Required.
+          hostId: 'Server 1',
+
+          // Required for each flow definition.
+          name: 'Connection name 2',
 
           // Queue type (Bull or Bullmq or Bee - default Bull).
           type: 'bullmq',
