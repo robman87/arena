@@ -143,7 +143,7 @@ const Arena = require('bull-arena');
 const express = require('express');
 const router = express.Router();
 
-const Bull = require('bull')
+const Bull = require('bull');
 
 const arena = Arena({
   // Include a reference to the bee-queue or bull libraries, depending on the library being used.
@@ -298,6 +298,10 @@ Arena has added preliminary support for BullMQ post 3.4.x version. To add a Bull
 You can `docker pull` Arena from [Docker Hub](https://hub.docker.com/r/mixmaxhq/arena/).
 
 Please see the [docker-arena] repository for details.
+
+### Official UIs
+
+- [Taskforce](https://taskforce.sh) for Bull and Bullmq
 
 ### Contributing
 

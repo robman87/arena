@@ -59,7 +59,7 @@ async function _json(req, res) {
     const words = state.split('-');
     const finalStateName = words.map((word) => _.capitalize(word)).join('');
     jobs = await queue[`get${finalStateName}`](0, 1000);
-    jobs = jobs.map((j) => j.toJSON());
+    jobs = jobs.map((j) => j && j.toJSON());
   }
 
   const filename = `${queueName}-${state}-dump.json`;
@@ -80,6 +80,7 @@ async function _html(req, res) {
   const {Queues, Flows} = req.app.locals;
   const queue = await Queues.get(queueName, queueHost);
   const basePath = req.baseUrl;
+
   if (!queue)
     return res.status(404).render('dashboard/templates/queueNotFound', {
       basePath,
@@ -123,15 +124,24 @@ async function _html(req, res) {
   } else {
     const stateTypes = state === 'waiting' ? ['wait', 'paused'] : state;
     jobs = await queue.getJobs(stateTypes, startId, endId, order === 'asc');
-    jobs = jobs.filter((job) => job && typeof job === 'object') // Filter out Bull jobs that have become null by the time the promise resolves
+    jobs = jobs.filter((job) => job && typeof job === 'object'); // Filter out Bull jobs that have become null by the time the promise resolves
   }
 
-  for (const job of jobs) {
-    const jobState = queue.IS_BEE ? job.status : await job.getState();
-    job.showRetryButton = !queue.IS_BEE || jobState === 'failed';
-    job.retryButtonText = jobState === 'failed' ? 'Retry' : 'Trigger';
-    job.showPromoteButton = !queue.IS_BEE && jobState === 'delayed';
-    job.parent = JobHelpers.getKeyProperties(job.parentKey);
+  for (let i = 0; i < jobs.length; i++) {
+    if (!jobs[i]) {
+      jobs[i] = {
+        showRetryButton: false,
+        showPromoteButton: false,
+        showDeleteRepeatableButton: false,
+      };
+    } else {
+      const jobState = queue.IS_BEE ? jobs[i].status : await jobs[i].getState();
+      jobs[i].showRetryButton = !queue.IS_BEE || jobState === 'failed';
+      jobs[i].retryButtonText = jobState === 'failed' ? 'Retry' : 'Trigger';
+      jobs[i].showPromoteButton = !queue.IS_BEE && jobState === 'delayed';
+      jobs[i].showDeleteRepeatableButton = queue.IS_BULL && jobs[i].opts.repeat;
+      jobs[i].parent = JobHelpers.getKeyProperties(jobs[i].parentKey);
+    }
   }
 
   let pages = _.range(page - 6, page + 7).filter((page) => page >= 1);
