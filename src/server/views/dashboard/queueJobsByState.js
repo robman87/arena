@@ -139,7 +139,7 @@ async function _html(req, res) {
       jobs[i].showRetryButton = !queue.IS_BEE || jobState === 'failed';
       jobs[i].retryButtonText = jobState === 'failed' ? 'Retry' : 'Trigger';
       jobs[i].showPromoteButton = !queue.IS_BEE && jobState === 'delayed';
-      jobs[i].showDeleteRepeatableButton = queue.IS_BULL && jobs[i].opts.repeat;
+      jobs[i].showDeleteRepeatableButton = !queue.IS_BEE && jobs[i].opts.repeat;
       jobs[i].parent = JobHelpers.getKeyProperties(jobs[i].parentKey);
     }
   }
@@ -152,7 +152,12 @@ async function _html(req, res) {
   const disablePromote = !(state === 'delayed' && !queue.IS_BEE);
   const disableRetry = !(
     state === 'failed' ||
-    (state === 'delayed' && !queue.IS_BEE)
+    (state === 'delayed' && queue.IS_BEE)
+  );
+  const disableClean = !(
+    state === 'failed' ||
+    state === 'completed' ||
+    !queue.IS_BULL
   );
 
   return res.render('dashboard/templates/queueJobsByState', {
@@ -165,6 +170,7 @@ async function _html(req, res) {
     disablePagination:
       queue.IS_BEE && (state === 'succeeded' || state === 'failed'),
     disableOrdering: queue.IS_BEE,
+    disableClean,
     disablePromote,
     disableRetry,
     currentPage: page,

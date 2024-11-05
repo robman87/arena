@@ -1,3 +1,61 @@
+### [4.4.2](https://github.com/bee-queue/arena/compare/v4.4.1...v4.4.2) (2024-06-13)
+
+### Bug Fixes
+
+- **bull:** retry only failed jobs ([#678](https://github.com/bee-queue/arena/issues/678)) ([8488040](https://github.com/bee-queue/arena/commit/848804051a5949487b06453fbf54b1f2ca2dc737))
+
+### [4.4.1](https://github.com/bee-queue/arena/compare/v4.4.0...v4.4.1) (2024-05-07)
+
+### Bug Fixes
+
+- **jobs:** validate jobs length in bulk action ([#676](https://github.com/bee-queue/arena/issues/676)) ([2bce363](https://github.com/bee-queue/arena/commit/2bce36391052d747c01aa20adda28d38d4a8fdee))
+
+## [4.4.0](https://github.com/bee-queue/arena/compare/v4.3.0...v4.4.0) (2024-05-03)
+
+### Features
+
+- **bull:** add clean jobs button for completed and failed ([#675](https://github.com/bee-queue/arena/issues/675)) ([e62aef0](https://github.com/bee-queue/arena/commit/e62aef022cf771b715cf65d100391f6f88c5cfd5))
+
+## [4.3.0](https://github.com/bee-queue/arena/compare/v4.2.0...v4.3.0) (2024-04-27)
+
+### Features
+
+- **details:** update job data ([#674](https://github.com/bee-queue/arena/issues/674)) ([24ab67f](https://github.com/bee-queue/arena/commit/24ab67f637da2ae8add30231340e413342de8461))
+
+## [4.2.0](https://github.com/bee-queue/arena/compare/v4.1.1...v4.2.0) (2024-02-12)
+
+### Features
+
+- **add-job:** provide editor for adding options ([#670](https://github.com/bee-queue/arena/issues/670)) ([3f4c640](https://github.com/bee-queue/arena/commit/3f4c6400b090b64fbcec87df03442bb8c2672790))
+
+### [4.1.1](https://github.com/bee-queue/arena/compare/v4.1.0...v4.1.1) (2024-02-08)
+
+### Bug Fixes
+
+- **layouts:** include favicon at layout template ([#668](https://github.com/bee-queue/arena/issues/668)) ([a107ad9](https://github.com/bee-queue/arena/commit/a107ad9b16fb8b5c20abece0ed36ca3855895e41))
+
+## [4.1.0](https://github.com/bee-queue/arena/compare/v4.0.1...v4.1.0) (2023-10-28)
+
+### Features
+
+- **bullmq:** support removing repeatable jobs ([#667](https://github.com/bee-queue/arena/issues/667)) ([df1ab37](https://github.com/bee-queue/arena/commit/df1ab37ac51af342ffbadff8aeba2b18313a2dbb))
+
+### [4.0.1](https://github.com/bee-queue/arena/compare/v4.0.0...v4.0.1) (2023-09-11)
+
+### Bug Fixes
+
+- **job-details:** omit scripts attribute to stringify jobs ([#665](https://github.com/bee-queue/arena/issues/665)) fixes [#598](https://github.com/bee-queue/arena/issues/598) ([a76ed5f](https://github.com/bee-queue/arena/commit/a76ed5f9c7d48e647e62a16ef282a77c3eafc999))
+
+## [4.0.0](https://github.com/bee-queue/arena/compare/v3.30.4...v4.0.0) (2023-09-02)
+
+### ⚠ BREAKING CHANGES
+
+- **bullmq:** add new prioritized state, previous versions of bullmq wont't see this state
+
+### Features
+
+- **bullmq:** support prioritized state ([#664](https://github.com/bee-queue/arena/issues/664)) ([9a7541c](https://github.com/bee-queue/arena/commit/9a7541cd08fa33e8c4f75f8fc38dae3a63eacaa2))
+
 ### [3.30.4](https://github.com/bee-queue/arena/compare/v3.30.3...v3.30.4) (2023-02-18)
 
 ### Bug Fixes
